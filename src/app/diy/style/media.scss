@@ -1,0 +1,18 @@
+$size: 1920;
+$stand: $size;
+$minSize: 1080;
+
+html {
+  min-width: #{$minSize}px;
+  font-size: 625%;
+  body{font-size: .12rem}
+}
+
+@while ($size > $minSize) {
+  @media only screen and (min-width: #{$size - 5}px) and (max-width: #{$size - 1}px) {
+    html{
+      font-size: #{$size/$stand*625%};
+    }
+  }
+  $size: $size - 5;
+}

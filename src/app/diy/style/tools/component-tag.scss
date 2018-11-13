@@ -1,0 +1,14 @@
+app-pages{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+app-header{
+  display: block;
+}
+app-index{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}

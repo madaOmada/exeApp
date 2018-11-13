@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgProgress} from '@ngx-progressbar/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <ng-progress></ng-progress>
+    <router-outlet></router-outlet>
+  `
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  constructor(public progress: NgProgress) {
+  }
+
+  ngOnInit() {
+
+  }
 }

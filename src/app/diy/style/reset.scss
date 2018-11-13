@@ -1,0 +1,16 @@
+article, aside, footer, header, nav, main, section, summary, details, hgroup, figure, figcaption {
+  display: block;
+}
+html{box-sizing: border-box;font-family: "Microsoft YaHei",Arial,"宋体",sans-serif;}
+body,p,ul,dl,dd{margin: 0;}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+ul {list-style: none;padding:0;}
+button, input, select, textarea{border:none;outline: none;appearance: none;padding: 0;}
+input:-webkit-autofill{-webkit-box-shadow: 0 0 0px 1000px #fff inset;}
+img{max-width: 100%;vertical-align: middle}
+a{text-decoration: none;color: inherit}
+*{-webkit-tap-highlight-color:transparent!important;}

@@ -1,0 +1,17 @@
+@import "fun";
+@import "./tools/scollbar";
+@import "./tools/component-tag";
+@import "./tools/skin";
+html,body,app-root{
+  height: 100%;
+}
+app-root{
+  display: flex;
+  flex-direction: column;
+}
+
+.center-wrap{
+  width: 12rem;
+  min-width: 1200px;
+  margin: 0 auto;
+}

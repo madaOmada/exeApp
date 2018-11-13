@@ -1,0 +1,13 @@
+.header{
+  height: 38px;
+  color: #fff;
+  .center-wrap {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home i{
+    vertical-align: text-top;
+  }
+}
