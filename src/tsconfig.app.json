@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": ["Swiper"]
+    "types": ["node", "Swiper"]
   },
   "exclude": [
     "src/test.ts",

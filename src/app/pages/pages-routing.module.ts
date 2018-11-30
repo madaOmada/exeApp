@@ -2,10 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PagesComponent} from './pages.component';
 import {IndexComponent} from './index/index.component';
+import {MetaGuard} from '@ngx-meta/core';
 
 const routes: Routes = [
   {
-    path: '', component: PagesComponent,
+    path: '',
+    canActivate: [MetaGuard],
+    canActivateChild: [MetaGuard],
+    component: PagesComponent,
     children: [
       {
         path: '',

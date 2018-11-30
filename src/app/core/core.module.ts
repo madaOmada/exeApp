@@ -12,12 +12,19 @@ import {MetaService} from './service/meta.service';
     NgProgressModule.forRoot(),
     NgProgressRouterModule,
     NgZorroAntdModule,
+    /*meta for tdk*/
+    MetaModule.forRoot({
+      provide: MetaLoader,
+      useFactory: ((metaService: MetaService) => metaService.metaFactory()),
+      deps: [MetaService]
+    })
   ],
   providers: [MetaService],
   exports: [
     NgProgressModule,
     NgProgressRouterModule,
     NgZorroAntdModule,
+    MetaModule
   ],
   declarations: []
 })
