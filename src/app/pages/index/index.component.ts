@@ -1,4 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {selectLoginModal, selectRouterUrl, selectUserData} from '../../+state/app.selector';
+import {RouterReducerState} from '@ngrx/router-store';
 
 @Component({
   selector: 'app-index',
@@ -8,10 +11,21 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 export class IndexComponent implements OnInit, AfterViewInit {
   swiper: Swiper;
 
-  constructor() {
+  constructor(
+    private store: Store<RouterReducerState>
+  ) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.pipe(
+      select(selectRouterUrl)
+    ).subscribe(url => console.log(url));
+    this.store.pipe(
+      select(selectUserData)
+    ).subscribe(data => {
+      console.log(data);
+    });
+  }
 
   ngAfterViewInit() {}
 }

@@ -15,7 +15,7 @@ import {MetaService} from './service/meta.service';
     /*meta for tdk*/
     MetaModule.forRoot({
       provide: MetaLoader,
-      useFactory: ((metaService: MetaService) => metaService.metaFactory()),
+      useFactory: (metaService: MetaService) => metaService.metaFactory(),
       deps: [MetaService]
     })
   ],

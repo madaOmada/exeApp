@@ -30,6 +30,7 @@
     "@ngx-pwa/local-storage": "6",
     "core-js": "^2.5.4",
     "ng-zorro-antd": "^1.8.0",
+    "ngrx-store-freeze": "^0.2.4",
     "rxjs": "^6.0.0",
     "swiper": "^4.3.5",
     "zone.js": "^0.8.26"

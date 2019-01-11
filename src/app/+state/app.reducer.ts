@@ -1,6 +1,5 @@
-import {AppData} from '../core/interface/app.interface';
 import {AppAction, AppActionTypes} from './app.action';
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {AppData} from '@core/interface/app.interface';
 
 /**
  * 默认的APP相关属性
@@ -51,21 +50,8 @@ export function appReducer(state = defaultAppData, action: AppAction): AppData {
         isLogin: false,
         userData: null
       };
+    default:
+      return state;
   }
 }
 
-/**
- * 监听APP相应的状态值
- * @type {MemoizedSelector<object, AppData>}
- */
-export const selectAppState = createFeatureSelector<AppData>('appReducer');
-/*登陆框状态变化*/
-export const selectLoginModal = createSelector(
-  selectAppState,
-  (state: AppData) => state.showLoginModal
-);
-/*用户数据变化*/
-export const selectUserData = createSelector(
-  selectAppState,
-  (state: AppData) => state.userData
-);
