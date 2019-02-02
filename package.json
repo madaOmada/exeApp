@@ -24,6 +24,7 @@
     "@ngrx/effects": "^6.1.2",
     "@ngrx/router-store": "^6.1.2",
     "@ngrx/store": "^6.1.0",
+    "@ngrx/store-devtools": "^7.2.0",
     "@ngx-meta/core": "^6.0.0",
     "@ngx-progressbar/core": "^5.0.1",
     "@ngx-progressbar/router": "^5.0.1",

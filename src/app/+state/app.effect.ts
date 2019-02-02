@@ -38,4 +38,16 @@ export class AppEffect {
       console.log(action);
     })
   );
+
+  @Effect()
+  cache$ = this.action$.pipe(
+    ofType(
+      AppActionTypes.ClearCache,
+      AppActionTypes.RemoveCache,
+      AppActionTypes.AddCache
+    ),
+    tap(action => {
+      console.log('cacheEffect', action);
+    })
+  );
 }

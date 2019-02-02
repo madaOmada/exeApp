@@ -34,6 +34,11 @@ export const selectUserData = createSelector(
   (state: AppData) => state.userData
 );
 
+export const selectHttpCache = createSelector(
+  selectAppState,
+  (state: AppData) => state.httpCache
+);
+
 
 /**
  * 路由的相关selector

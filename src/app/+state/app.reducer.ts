@@ -1,4 +1,4 @@
-import {AppAction, AppActionTypes} from './app.action';
+import {AppAction, AppActionTypes, RemoveCache} from './app.action';
 import {AppData} from '@core/interface/app.interface';
 
 /**
@@ -7,6 +7,8 @@ import {AppData} from '@core/interface/app.interface';
  */
 export const defaultAppData: AppData = {
   version: 'own',
+  /*http请求缓存*/
+  httpCache: {},
   /*是否展示登录窗口*/
   showLoginModal: false,
   /*是否登录*/
@@ -49,6 +51,19 @@ export function appReducer(state = defaultAppData, action: AppAction): AppData {
         ...state,
         isLogin: false,
         userData: null
+      };
+    case AppActionTypes.ClearCache:
+      return {
+        ...state,
+        httpCache: {}
+      };
+    case AppActionTypes.RemoveCache:
+      delete state.httpCache[action.payload.key];
+      return state;
+    case AppActionTypes.AddCache:
+      return {
+        ...state,
+        httpCache: action.payload
       };
     default:
       return state;

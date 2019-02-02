@@ -5,10 +5,12 @@ import {NgProgressRouterModule} from '@ngx-progressbar/router';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {MetaLoader, MetaModule} from '@ngx-meta/core';
 import {MetaService} from './service/meta.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     NgProgressModule.forRoot(),
     NgProgressRouterModule,
     NgZorroAntdModule,

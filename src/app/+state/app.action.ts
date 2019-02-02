@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {User} from '../core/interface/user.interface';
+import {Cache} from '@core/interface/app.interface';
 
 /**
  * 应用状态值对应表
@@ -16,7 +17,14 @@ export enum AppActionTypes {
   /*登录成功 params:User 更新用户信息*/
   LoginSuccess = '[Auth Login Success]',
   /*退出登录*/
-  Logout = '[Auth Logout]'
+  Logout = '[Auth Logout]',
+  /*http缓存相关操作*/
+  /*清空缓存*/
+  ClearCache = '[Http Clear Cache]',
+  /*删除缓存某项*/
+  RemoveCache = '[Http Remove Cache]',
+  /*添加缓存*/
+  AddCache = '[Http Add Cache]'
 }
 
 /**
@@ -45,6 +53,20 @@ export class Logout implements Action {
   readonly type = AppActionTypes.Logout;
 }
 
+export class ClearCache implements Action {
+  readonly type = AppActionTypes.ClearCache;
+}
+
+export class RemoveCache implements Action {
+  readonly type = AppActionTypes.RemoveCache;
+  constructor (public payload: { key: string }) {}
+}
+
+export class AddCache implements Action {
+  readonly type = AppActionTypes.AddCache;
+  constructor (public payload: Cache) {}
+}
+
 /**
  * 输出类型
  */
@@ -52,5 +74,8 @@ export type AppAction = AppVersion
 | OpenLogin
 | CloseLogin
 | LoginSuccess
-| Logout;
+| Logout
+| ClearCache
+| RemoveCache
+| AddCache;
 

@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src/",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -17,10 +17,11 @@
       "dom"
     ],
     "paths": {
-      "@core": ["src/app/core/core.module.ts"],
-      "@core/*": ["src/app/core/*"],
-      "@share": ["src/app/share/share.module.ts"],
-      "@share/*": ["src/app/share/*"]
+      "@env/*": ["app/environments/*"],
+      "@core": ["app/core/core.module.ts"],
+      "@core/*": ["app/core/*"],
+      "@share": ["app/share/share.module.ts"],
+      "@share/*": ["app/share/*"]
     },
     "types": ["node"]
   }

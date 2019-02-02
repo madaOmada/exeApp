@@ -3,6 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  host: '//api5.tubangzhu.site',
+  version: 'v1',
+  client: 'tubangzhu_web',
+  handle: 'frontend',
   production: false,
   hmr: false
 };
