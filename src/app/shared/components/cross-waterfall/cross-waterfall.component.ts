@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {WaterFile} from '@core/interface/file.interface';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {ImageFile, WaterFile} from '@core/interface/file.interface';
+import {SimpleChanges} from '@angular/core/src/metadata/lifecycle_hooks';
 
 
 @Component({
@@ -8,17 +8,33 @@ import {WaterFile} from '@core/interface/file.interface';
   templateUrl: './cross-waterfall.component.html',
   styleUrls: ['./cross-waterfall.component.scss']
 })
-export class CrossWaterfallComponent implements OnInit {
-  containerWidth: number;
-  list: WaterFile[];
-  constructor(
-    private http: HttpClient
-  ) { }
+export class CrossWaterfallComponent implements OnInit, OnChanges {
+  @Input() child;
+  @Input() list: ImageFile[];
+  @Input() height = [300, 400];
+  @Input() fixHeight = 30;
+  @Input() ClientWidth: number;
+  @Input() getterX = 8;
+  @Input() getterY = 8;
+
+  render: WaterFile[] = [];
+  ClientHeight = 0;
+
+  constructor() {
+  }
 
   ngOnInit() {
-    this.http.get('/assets/mock_data/water.json').subscribe(res => {
-      console.log(res);
-    });
+    this.calculate();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.list && !changes.list.firstChange) {
+      this.calculate();
+    }
+  }
+
+  calculate() {
+
   }
 
 }

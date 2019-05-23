@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {PagesModule} from './pages/pages.module';
 import {StoreModule} from '@ngrx/store';
-import { StoreRouterConnectingModule} from '@ngrx/router-store';
+import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CoreModule} from '@core/core.module';
 import { metaReducers, reducers} from './+state/app.selector';
 import {InitializerService} from '@core/service/initializer.service';
@@ -13,23 +13,30 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {InterceptService} from '@core/service/intercept.service';
 import {environment} from '../environments/environment';
 import {Environment} from '@core/interface/enviroment.interface';
+import {EffectsModule} from '@ngrx/effects';
+import {AppEffect} from './+state/app.effect';
+import { WaterfallDirective } from './core/directive/waterfall.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WaterfallDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'sm-app'}),
     CoreModule,
     PagesModule,
     RouterModule.forRoot([]),
     /*Redux*/
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AppEffect]),
     // !environment.production ? StoreDevtoolsModule.instrument({
     //   maxAge: 25, // Retains last 25 states
     //   logOnly: environment.production, // Restrict extension to log-only mode
     // }) : [],
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'routerReducer'
+    })
   ],
   providers: [
     InitializerService,
@@ -39,11 +46,9 @@ import {Environment} from '@core/interface/enviroment.interface';
       deps: [InitializerService],
       multi: true
     },
-    InterceptService,
     {
       provide: HTTP_INTERCEPTORS,
-      useFactory: (intercept: InterceptService) => intercept,
-      deps: [InterceptService],
+      useClass: InterceptService,
       multi: true
     },
     {
