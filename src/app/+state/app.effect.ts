@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {AppActionTypes} from './app.action';
+import {AppActionTypes, LoginSuccess} from './app.action';
 import {tap} from 'rxjs/internal/operators';
 import {LocalStorage} from '@ngx-pwa/local-storage';
 
@@ -18,11 +18,11 @@ export class AppEffect {
    * @action 记录本地user信息
    * @type {Observable<any>}
    */
-  @Effect()
+  @Effect({dispatch: false})
   loginSuccess$ = this.action$.pipe(
-    ofType(AppActionTypes.LoginSuccess),
+    ofType<LoginSuccess>(AppActionTypes.LoginSuccess),
     tap(action => {
-      console.log(action);
+      this.local.setItem('_user', action.payload);
     })
   );
 
@@ -34,20 +34,8 @@ export class AppEffect {
   @Effect()
   logout$ = this.action$.pipe(
     ofType(AppActionTypes.Logout),
-    tap(action => {
-      console.log(action);
-    })
-  );
-
-  @Effect()
-  cache$ = this.action$.pipe(
-    ofType(
-      AppActionTypes.ClearCache,
-      AppActionTypes.RemoveCache,
-      AppActionTypes.AddCache
-    ),
-    tap(action => {
-      console.log('cacheEffect', action);
+    tap(() => {
+      this.local.removeItem('_user');
     })
   );
 }

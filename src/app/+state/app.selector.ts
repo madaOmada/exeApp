@@ -7,13 +7,13 @@ import {ActionReducerMap} from '@ngrx/store/src/models';
 import {appReducer} from './app.reducer';
 
 export interface AppState {
-  appReducer: AppData;
-  routerReducer: RouterReducerState;
+  app: AppData;
+  router: RouterReducerState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  appReducer,
-  routerReducer
+  app: appReducer,
+  router: routerReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = environment.production ? [] : [storeFreeze];
@@ -22,7 +22,7 @@ export const metaReducers: MetaReducer<AppState>[] = environment.production ? []
  * 监听APP相应的状态值
  * @type {MemoizedSelector<object, AppData>}
  */
-export const selectAppState = createFeatureSelector<AppData>('appReducer');
+export const selectAppState = createFeatureSelector<AppData>('app');
 /*登陆框状态变化*/
 export const selectLoginModal = createSelector(
   selectAppState,
@@ -44,7 +44,7 @@ export const selectHttpCache = createSelector(
  * 路由的相关selector
  * @type {MemoizedSelector<object, RouterReducerState>}
  */
-export const selectRouter = createFeatureSelector<RouterReducerState>('routerReducer');
+export const selectRouter = createFeatureSelector<RouterReducerState>('router');
 
 export const selectRouterUrl = createSelector(
   selectRouter,

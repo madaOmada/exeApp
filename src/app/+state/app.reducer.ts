@@ -63,7 +63,10 @@ export function appReducer(state = defaultAppData, action: AppAction): AppData {
     case AppActionTypes.AddCache:
       return {
         ...state,
-        httpCache: action.payload
+        httpCache: {
+          ...state.httpCache,
+          ...action.payload
+        }
       };
     default:
       return state;
