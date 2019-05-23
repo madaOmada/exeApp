@@ -2,6 +2,7 @@
 @import "./tools/scollbar";
 @import "./tools/component-tag";
 @import "./tools/skin";
+@import '~handsontable/dist/handsontable.full.css';
 html,body,app-root{
   height: 100%;
 }

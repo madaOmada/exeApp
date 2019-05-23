@@ -4,12 +4,14 @@ import { PagesComponent } from './pages.component';
 import {SharedModule} from '../shared/shared.module';
 import {PagesRoutingModule} from './pages-routing.module';
 import { IndexComponent } from './index/index.component';
+import {HotTableModule} from '@handsontable/angular';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    HotTableModule
   ],
   declarations: [PagesComponent, IndexComponent],
   exports: [PagesRoutingModule]
