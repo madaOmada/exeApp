@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgProgressModule.forRoot(),
+    NgProgressModule,
     NgProgressRouterModule,
     NgZorroAntdModule,
     /*meta for tdk*/

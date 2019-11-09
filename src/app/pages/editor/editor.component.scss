@@ -1,0 +1,22 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .tool {
+    padding: 8px;
+    .btn {
+      padding: 4px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+  }
+  .canvas {
+    flex: 1;
+  }
+
+  ::ng-deep {
+
+  }
+}

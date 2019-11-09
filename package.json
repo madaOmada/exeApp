@@ -42,6 +42,7 @@
     "handsontable": "^7.0.3",
     "ng-zorro-antd": "^1.8.0",
     "ngrx-store-freeze": "^0.2.4",
+    "ngx-infinite-scroll": "^7.1.0",
     "rxjs": "6.0.0",
     "zone.js": "^0.8.26"
   },

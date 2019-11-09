@@ -5,15 +5,18 @@ import {SharedModule} from '../shared/shared.module';
 import {PagesRoutingModule} from './pages-routing.module';
 import { IndexComponent } from './index/index.component';
 import {HotTableModule} from '@handsontable/angular';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     PagesRoutingModule,
-    HotTableModule
+    HotTableModule,
+    InfiniteScrollModule
   ],
-  declarations: [PagesComponent, IndexComponent],
+  declarations: [PagesComponent, IndexComponent, EditorComponent],
   exports: [PagesRoutingModule]
 })
 export class PagesModule { }
