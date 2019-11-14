@@ -15,12 +15,11 @@ import {environment} from '../environments/environment';
 import {Environment} from '@core/interface/enviroment.interface';
 import {EffectsModule} from '@ngrx/effects';
 import {AppEffect} from './+state/app.effect';
-import { WaterfallDirective } from './core/directive/waterfall.directive';
+import { WaterfallDirective } from './shared/directives/waterfall.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WaterfallDirective
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'sm-app'}),
@@ -28,7 +27,7 @@ import { WaterfallDirective } from './core/directive/waterfall.directive';
     PagesModule,
     RouterModule.forRoot([]),
     /*Redux*/
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([AppEffect]),
     // !environment.production ? StoreDevtoolsModule.instrument({
     //   maxAge: 25, // Retains last 25 states

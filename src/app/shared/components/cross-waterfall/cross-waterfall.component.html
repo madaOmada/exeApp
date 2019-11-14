@@ -1,3 +1,6 @@
-<div class="container">
-
+<div class="container" [ngStyle]="{height: ClientHeight + 'px'}">
+  <div class="item" *ngFor="let item of render"
+       [ngStyle]="{width: item.width + 'px', height: item.height + 'px', top: item.top + 'px', left: item.left + 'px'}">
+      <ng-template appWaterfall [file]="item.file" [child]="child"></ng-template>
+  </div>
 </div>

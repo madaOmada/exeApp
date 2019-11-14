@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { CrossWaterfallComponent } from './components/cross-waterfall/cross-waterfall.component';
 import {FileDownloadDirective} from './directives/file-download.directive';
+import {TemplateItemComponent} from './components/template-item/template-item.component';
+import {WaterfallDirective} from './directives/waterfall.directive';
 
 const COMPONENTS = [
   HeaderComponent,
-  CrossWaterfallComponent
+  CrossWaterfallComponent,
+  TemplateItemComponent
 ];
 
 const Directives = [
-  FileDownloadDirective
+  FileDownloadDirective,
+  WaterfallDirective
 ];
 
 @NgModule({
@@ -25,6 +29,9 @@ const Directives = [
     CommonModule,
     ...COMPONENTS,
     ...Directives
+  ],
+  entryComponents: [
+    ...COMPONENTS
   ]
 })
 export class SharedModule { }

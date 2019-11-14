@@ -33,7 +33,7 @@ export class InterceptService implements HttpInterceptor {
           return of(caches[cacheKey]);
         } else {
           const request = req.clone({
-            url: req.url.match(/(?:http|https)/) ? req.url : this.env.host + '/' + this.env.version + req.url,
+            url: req.url.match(/(?:http|https|\/assets)/) ? req.url : this.env.host + '/' + this.env.version + req.url,
             headers: req.headers.set('handle', this.env.handle).set('client', this.env.client),
             body: req.body,
             withCredentials: true

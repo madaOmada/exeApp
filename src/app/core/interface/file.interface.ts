@@ -7,6 +7,8 @@ export interface ImageFile {
 export interface WaterFile {
   width: number;
   height: number;
+  left: number;
+  top: number;
   file: ImageFile;
 }
 

@@ -17,3 +17,7 @@
 <!--<button nz-button (click)="touch()">触发</button>-->
 <!--<a appFileDownload [type]="'image'" download="aha.png" [value]="image">下载</a>-->
 <a [routerLink]="['/canvas']">canvas</a>
+<input type="file" multiple="multiple" (change)="fileChange($event)">
+<div class="cross-water" #cross>
+  <app-cross-waterfall [list]="list" [child]="cell" [ClientWidth]="cross.offsetWidth"></app-cross-waterfall>
+</div>

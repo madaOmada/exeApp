@@ -5,6 +5,8 @@ import {RouterReducerState} from '@ngrx/router-store';
 import {UserService} from '@core/service/user.service';
 import {HotTableRegisterer} from '@handsontable/angular';
 import {DOCUMENT} from '@angular/common';
+import {TemplateItemComponent} from '../../shared/components/template-item/template-item.component';
+import {ImageDataService} from '@core/service/image-data.service';
 
 @Component({
   selector: 'app-index',
@@ -13,6 +15,7 @@ import {DOCUMENT} from '@angular/common';
   providers: [HotTableRegisterer]
 })
 export class IndexComponent implements OnInit, AfterViewInit {
+  cell = TemplateItemComponent;
   image = '//image.tubangzhu.net/updata/201908/13/7a6add494b7a16ce00c8.png';
   setting = {
     data: [
@@ -33,6 +36,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
     }
   };
 
+  list;
+
   scrollHeight = 1000;
 
   table: Handsontable;
@@ -41,12 +46,17 @@ export class IndexComponent implements OnInit, AfterViewInit {
     private store: Store<RouterReducerState>,
     private userS: UserService,
     private hot: HotTableRegisterer,
+    private data: ImageDataService,
     @Inject(DOCUMENT) private document
   ) {
   }
 
   ngOnInit() {
+    this.data.getData().subscribe(data => this.list = data)
+  }
 
+  fileChange(event) {
+    console.log(event);
   }
 
   test() {
