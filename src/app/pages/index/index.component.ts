@@ -52,7 +52,9 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.data.getData().subscribe(data => this.list = data)
+    this.data.getData().subscribe(data => {
+      this.list = data;
+    })
   }
 
   fileChange(event) {
@@ -66,7 +68,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   touch() {
-    console.log(this.table.getSettings());
+    this.data.getData().subscribe()
   }
 
   onScrollDown() {

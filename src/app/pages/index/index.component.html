@@ -14,10 +14,12 @@
 <!--&gt;-->
   <!--<div [ngStyle]="{height: scrollHeight + 'px'}"></div>-->
 <!--</div>-->
-<!--<button nz-button (click)="touch()">触发</button>-->
+<a (click)="touch()">触发</a>
 <!--<a appFileDownload [type]="'image'" download="aha.png" [value]="image">下载</a>-->
 <a [routerLink]="['/canvas']">canvas</a>
-<input type="file" multiple="multiple" (change)="fileChange($event)">
-<div class="cross-water" #cross>
-  <app-cross-waterfall [list]="list" [child]="cell" [ClientWidth]="cross.offsetWidth"></app-cross-waterfall>
-</div>
+<!--<input type="file" multiple="multiple" (change)="fileChange($event)">-->
+
+<!--瀑布示例-->
+<!--<div class="cross-water" #cross>-->
+<!--  <app-cross-waterfall [list]="list" [child]="cell" [ClientWidth]="cross.offsetWidth"></app-cross-waterfall>-->
+<!--</div>-->

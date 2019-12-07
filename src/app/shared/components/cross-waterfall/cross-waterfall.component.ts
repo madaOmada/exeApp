@@ -51,10 +51,12 @@ export class CrossWaterfallComponent implements OnInit, OnChanges {
     this.render = [];
     this.ClientHeight = 0;
     this.renderIndex = 0;
-
-    this.renderLine();
+    this.renderList();
   }
 
+  /**
+   * 计算行，递归
+   */
   renderLine() {
     const {list, renderIndex, column, ClientWidth, getterX, getterY} = this,
       newList: WaterFile[] = [];
@@ -70,7 +72,7 @@ export class CrossWaterfallComponent implements OnInit, OnChanges {
         left: 0,
         file: list[i]
       });
-      if (radio - column > -0.5 || newList.length > column || i == len - 1) {
+      if (radio - column > -0.6 || newList.length > column || i == len - 1) {
         this.renderIndex = i + 1;
         break;
       }
@@ -93,6 +95,44 @@ export class CrossWaterfallComponent implements OnInit, OnChanges {
     if (this.list[this.renderIndex]) {
       this.renderLine();
     }
+  }
+
+  /**
+   * 计算整个数组
+   */
+  renderList() {
+    const {list, column, ClientWidth, getterX, getterY} = this, renderList: WaterFile[] = [];
+    let renderIndex = 0, radio = 0, left = 0, ClientHeight = 0;
+
+    list.forEach((item, index) => {
+      // 当前行宽高比和计算
+      radio += item.width / item.height;
+      const length = index - renderIndex + 1;
+      // 当前行宽高比和合适时 | 数组遍历结束时, 开始计算当前行
+      if (radio - column > -0.6 || length > column || index === list.length - 1) {
+        // 当前行高度
+        const height = radio / column < 0.6 ? ClientWidth / column : (ClientWidth - (length - 1) * getterX) / radio;
+        // 当前行数组
+        const currentLine = list.slice(renderIndex, index + 1).map(file => {
+          const data: WaterFile = {
+            width: file.width / file.height * height,
+            height: height, top: ClientHeight, left, file
+          };
+          left += data.width + getterX;
+          return data;
+        });
+
+        renderList.push(...currentLine);
+
+        // 新的一行重置行计数变量
+        radio = 0, left = 0, renderIndex = index + 1;
+
+        // 总高度累加
+        ClientHeight += height + getterY;
+      }
+    });
+    this.ClientHeight = ClientHeight;
+    this.render = renderList;
   }
 
 }

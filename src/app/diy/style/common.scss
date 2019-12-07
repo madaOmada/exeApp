@@ -3,6 +3,8 @@
 @import "./tools/component-tag";
 @import "./tools/skin";
 @import '~handsontable/dist/handsontable.full.css';
+@import "~@angular/cdk/overlay-prebuilt.css";
+
 html,body,app-root{
   height: 100%;
 }

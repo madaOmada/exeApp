@@ -4,7 +4,7 @@ import {HttpEvent} from '@angular/common/http/src/response';
 import {HttpHandler} from '@angular/common/http/src/backend';
 import {Observable, of} from 'rxjs';
 import {HttpRequest} from '@angular/common/http/src/request';
-import {map, mergeMap, switchMap, take} from 'rxjs/internal/operators';
+import {map, mergeMap, shareReplay, switchMap, take, tap} from 'rxjs/internal/operators';
 import {Environment} from '@core/interface/enviroment.interface';
 import {select, State, Store} from '@ngrx/store';
 import {AddCache} from '../../+state/app.action';
@@ -25,12 +25,15 @@ export class InterceptService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const cacheKey = req.method + req.urlWithParams, doCache = req.headers.has('do-cache');
+
     return this.store.pipe(
       select(selectHttpCache),
       take(1),
       switchMap(caches => {
         if (caches[cacheKey] && doCache) {
-          return of(caches[cacheKey]);
+          return of(new HttpResponse({
+            body: caches[cacheKey]
+          }));
         } else {
           const request = req.clone({
             url: req.url.match(/(?:http|https|\/assets)/) ? req.url : this.env.host + '/' + this.env.version + req.url,
@@ -43,19 +46,13 @@ export class InterceptService implements HttpInterceptor {
         }
       }),
       mergeMap(event => {
-        if (event instanceof HttpResponse) {
-          doCache && this.store.dispatch(new AddCache({[cacheKey]: event.body.data}));
-          return of(event.clone({
-            body: event.body.data
-          }));
-        } else {
-          return of(new HttpResponse({
-            body: event
-          }));
+        if (event instanceof HttpResponse && doCache) {
+          this.store.dispatch(new AddCache({[cacheKey]: event.body}));
         }
-      })
+        return of(event);
+      }),
+      shareReplay()
     );
-
 
   }
 }

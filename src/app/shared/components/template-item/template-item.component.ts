@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ImageFile} from '@core/interface/file.interface';
 
 @Component({
@@ -8,6 +8,8 @@ import {ImageFile} from '@core/interface/file.interface';
 })
 export class TemplateItemComponent implements OnInit {
   @Input() file: ImageFile;
+
+  @Output() action = new EventEmitter<{method: string, data: any}>();
   constructor() { }
 
   ngOnInit() {
