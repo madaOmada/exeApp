@@ -1,1 +1,10 @@
-
+<div>
+  <div class="mask" *ngIf="mask"></div>
+  <div class="modal-container" role="dialog" (click)="maskClick()">
+    <div class="modal-body" #modalBody>
+      <!--关闭按钮-->
+      <button class="close-button">&#10005;</button>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

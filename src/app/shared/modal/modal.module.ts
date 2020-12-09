@@ -10,6 +10,9 @@ import {ModalComponent} from './modal.component';
   ],
   declarations: [
     ModalComponent
+  ],
+  entryComponents: [
+    ModalComponent
   ]
 })
 export class ModalModule { }

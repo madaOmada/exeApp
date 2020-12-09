@@ -7,6 +7,8 @@ import { IndexComponent } from './index/index.component';
 import {HotTableModule} from '@handsontable/angular';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { EditorComponent } from './editor/editor.component';
+import { ColorsComponent } from './colors/colors.component';
+import { SpreadExcelComponent } from './spread-excel/spread-excel.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,7 @@ import { EditorComponent } from './editor/editor.component';
     HotTableModule,
     InfiniteScrollModule
   ],
-  declarations: [PagesComponent, IndexComponent, EditorComponent],
+  declarations: [PagesComponent, IndexComponent, EditorComponent, ColorsComponent, SpreadExcelComponent],
   exports: [PagesRoutingModule]
 })
 export class PagesModule { }

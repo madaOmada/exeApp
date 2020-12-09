@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="400" height="400"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle cx="25" cy="25" r="25" fill="#000"></circle>
+  <rect x="100" y="5" width="30" height="80" fill="#00a2eb"></rect>
+
+  <svg x="100" y="5" width="30" height="80" viewBox="0 0 50 50" preserveAspectRatio="xMaxYMax meet">
+    <circle cx="25" cy="25" r="25" fill="#000fff"></circle>
+  </svg>
+</svg>

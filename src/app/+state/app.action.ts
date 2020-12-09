@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {User} from '../core/interface/user.interface';
+import {User} from '@core/interface/user.interface';
 import {Cache} from '@core/interface/app.interface';
 
 /**

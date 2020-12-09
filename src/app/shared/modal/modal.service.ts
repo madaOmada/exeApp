@@ -16,7 +16,7 @@ export class ModalBuilder {
     this._changeOptions(options);
 
     this._modalRef.instance.setOverlayRef(this._overlayRef);
-    this._modalRef.instance._afterClose.subscribe(() => this.destroyModal())
+    this._modalRef.instance.afterClose.subscribe(() => this.destroyModal())
   }
 
   getInstance() {

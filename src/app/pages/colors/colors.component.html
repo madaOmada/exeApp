@@ -1,0 +1,10 @@
+<div class="color-box">
+  <!--<div class="color-item">
+    <span class="color-cube" style="background-color: hsl(218, 94%, 59%)"></span>hsl(218, 94.3%, 59%)
+  </div>-->
+  <div class="color-item" *ngFor="let color of realColors">
+    <span class="color-cube" [ngStyle]="{backgroundColor: color['string']()}"></span>{{color['string']()}}
+  </div>
+
+
+</div>

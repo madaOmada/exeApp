@@ -12,3 +12,16 @@ export const domCenter = (dom: HTMLElement) => {
     y: dom.offsetHeight / 2
   };
 };
+
+export function getElementOffset(elem: HTMLElement): { top: number; left: number } {
+  if (!elem.getClientRects().length) {
+    return { top: 0, left: 0 };
+  }
+
+  const rect = elem.getBoundingClientRect();
+  const win = elem.ownerDocument!.defaultView;
+  return {
+    top: rect.top + win!.pageYOffset,
+    left: rect.left + win!.pageXOffset
+  };
+}

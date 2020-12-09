@@ -5,6 +5,7 @@ import { CrossWaterfallComponent } from './components/cross-waterfall/cross-wate
 import {FileDownloadDirective} from './directives/file-download.directive';
 import {TemplateItemComponent} from './components/template-item/template-item.component';
 import {WaterfallDirective} from './directives/waterfall.directive';
+import {ModalModule} from './modal/modal.module';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -19,7 +20,8 @@ const Directives = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ModalModule
   ],
   declarations: [
     ...COMPONENTS,
@@ -27,6 +29,7 @@ const Directives = [
   ],
   exports: [
     CommonModule,
+    ModalModule,
     ...COMPONENTS,
     ...Directives
   ],
